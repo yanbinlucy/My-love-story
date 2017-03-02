@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">	
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta name="format-detection" content="telephone=no,email=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+	{% block css %}{% endblock %}
+	<title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="wrapper-container">
+	{% block content %}{% endblock %}
+</div>
+
+{% block tpl %}{% endblock %}
+{% block js %}{% endblock %}
+<script type="text/javascript">
+	require.config({
+		//baseUrl: '../static/js'
+		baseUrl: 'http://oisj33nbt.bkt.clouddn.com/'
+	});
+
+	require(['loveStory'], function(loveStory){
+		loveStory.init();
+	});
+</script>
+{% include "./resize.html" %}
+</body>
+</html>

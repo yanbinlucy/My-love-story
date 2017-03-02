@@ -1,0 +1,751 @@
+$default-font-size: 20;
+@function torem($size) {
+    @return $size / $default-font-size * 1rem;
+}
+
+.wrapper-container {
+    max-width: 560px;
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.share-img{
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+body, html {
+  margin: 0;
+  overflow: hidden;
+  -webkit-transition: opacity 400ms;
+  -moz-transition: opacity 400ms;
+  transition: opacity 400ms;
+}
+
+body, .onepage-wrapper, html {
+  display: block;
+  position: static;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.onepage-wrapper {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  padding: 0;
+  -webkit-transform-style: preserve-3d;
+}
+
+.onepage-wrapper .ops-section {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.onepage-pagination {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  z-index: 5;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.onepage-pagination li {
+  padding: 0;
+  text-align: center;
+}
+.onepage-pagination li a{
+  padding: 10px;
+  width: 4px;
+  height: 4px;
+  display: block;
+  
+}
+.onepage-pagination li a:before{
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(0,0,0,0.85);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+
+.onepage-pagination li a.active:before{
+  width: 10px;
+  height: 10px;
+  background: none;
+  border: 1px solid black;
+  margin-top: -4px;
+  left: 8px;
+}
+
+.disabled-onepage-scroll, .disabled-onepage-scroll .wrapper {
+  overflow: auto;
+}
+
+.disabled-onepage-scroll .onepage-wrapper .ops-section {
+  position: relative !important;
+  top: auto !important;
+}
+.disabled-onepage-scroll .onepage-wrapper {
+  -webkit-transform: none !important;
+  -moz-transform: none !important;
+  transform: none !important;
+  -ms-transform: none !important;
+  min-height: 100%;
+}
+
+section.active{display: block;}
+
+.disabled-onepage-scroll .onepage-pagination {
+  display: none;
+}
+
+body.disabled-onepage-scroll, .disabled-onepage-scroll .onepage-wrapper, html {
+  position: inherit;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.page-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+}
+
+
+canvas {
+	position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 100;
+}
+
+.page1 {
+  background: url(http://oisj33nbt.bkt.clouddn.com/page1_bg.jpg);
+  background-size: cover;
+	text-align: center;
+    .page1-content{
+    	margin: 0 torem(60);
+    	position: relative;
+    	opacity: 0;
+		&.show {
+			opacity: 1;
+      -webkit-transition: opacity 3s 1s ease-in-out;
+			transition: opacity 3s 1s ease-in-out;
+		}
+    	.pc1-title,
+    	.pc1-name,
+    	.pc1-address,
+    	.pc1-time,
+    	.author {
+    		position: absolute;
+    		left: 50%;
+    		width: torem(190);
+    		margin-left: torem(-95);
+    	}
+    	.pc1-title {
+    		top: torem(100);
+    		font-size: torem(22);
+    		color: #c96c79;
+    	}
+    	.pc1-name {
+    		top: torem(140);
+    		font-size: torem(18);
+    		color: #c96c79;
+    		ul {
+			    display: inline-block;
+			    &:after {
+			    	content: '';
+			    	display: block;
+			    	height: 0;
+			    	visibility: hidden;
+			    	clear: both;
+			    }
+    			li {
+	    			float: left;
+	    			margin-right: torem(10);
+	    			span,i {
+	    				display: block;
+              margin-bottom: 10px;
+	    			}
+	    			i {
+	    				writing-mode: tb-rl;
+	    				height: torem(64);
+	    				margin: 0 auto;
+	    				font-style: normal;
+	    			}
+	    		}
+    		}
+    	}
+    	.pc1-address {
+    		top: torem(260);
+    		font-size: torem(13);
+    		color: #c96c79;
+    		line-height: 1.3;
+    	}
+    	.pc1-time {
+    		top: torem(300);
+    		font-size: torem(13);
+    		color: #c96c79;
+    	}
+    	.pc1-address span,
+    	.pc1-time span {
+    		display: inline-block;
+		    width: 77%;
+		    text-align: left;
+		    vertical-align: top;
+    	}
+    	.author {
+    		position: absolute;
+    		top: torem(380);
+    		font-size: torem(12);
+    		color: #ad530c;
+    	}
+    }
+}
+
+.page2,
+.page3,
+.page4,
+.page5 {
+	background: url(http://oisj33nbt.bkt.clouddn.com/page2_bg.jpeg);
+	background-size: cover;
+    .pc2-title,
+    .pc3-title,
+    .pc4-title,
+    .pc5-title {
+    	font-size: torem(20);
+    	color: #ab4a20;
+    	text-align: center;
+    	margin-top: torem(20);
+    }
+    #story {
+    	font-size: torem(14);
+    	color: #ab4a20;
+    	line-height: torem(18);
+    	padding: torem(12);
+    	p {
+    		margin-bottom: torem(10);
+    	}
+    }
+}
+
+.page3 {
+	.ul-wrapper {
+		margin-left: 0;
+		width: 100%;
+	  position: absolute;
+    &.slider{
+      -webkit-animation: slider 36s ease-out infinite alternate;
+      animation: slider 36s ease-out infinite alternate;
+    }
+		ul {
+	    	margin-top: torem(35); 
+	    	li {
+	    		height: torem(300);
+			    overflow: hidden;
+			    margin: 0 12px;
+			    float: left;
+			    img {
+			    	width: 100%;
+			    }
+	    	}
+	    }
+	}
+}
+@-webkit-keyframes slider {
+  0%,5% {
+    margin-left: 0px;
+  }
+  6%,10% {
+    margin-left: -100%;
+  }
+  11%,15% {
+    margin-left: -200%;
+  }
+  16%,20% {
+    margin-left: -300%;
+  }
+  21%,25% {
+    margin-left: -400%;
+  }
+  26%,30% {
+    margin-left: -500%;
+  }
+  31%,35% {
+    margin-left: -600%;
+  }
+  36%,40% {
+    margin-left: -700%;
+  }
+  41%,45% {
+    margin-left: -800%;
+  }
+  46%,50% {
+    margin-left: -900%;
+  }
+  51%,55% {
+    margin-left: -1000%;
+  }
+  56%,60% {
+    margin-left: -1100%;
+  }
+  61%,65% {
+    margin-left: -1200%;
+  }
+  66%,70% {
+    margin-left: -1300%;
+  }
+  71%,75% {
+    margin-left: -1400%;
+  }
+  76%,80% {
+    margin-left: -1500%;
+  }
+  81%,85% {
+    margin-left: -1600%;
+  }
+  86%,90% {
+    margin-left: -1700%;
+  }
+  91%,95% {
+    margin-left: -1800%;
+  }
+  96%,100% {
+    margin-left: -1900%;
+  }
+}
+@keyframes slider {
+	0%,5% {
+    margin-left: 0px;
+  }
+  6%,10% {
+    margin-left: -100%;
+  }
+  11%,15% {
+    margin-left: -200%;
+  }
+  16%,20% {
+    margin-left: -300%;
+  }
+  21%,25% {
+    margin-left: -400%;
+  }
+  26%,30% {
+    margin-left: -500%;
+  }
+  31%,35% {
+    margin-left: -600%;
+  }
+  36%,40% {
+    margin-left: -700%;
+  }
+  41%,45% {
+    margin-left: -800%;
+  }
+  46%,50% {
+    margin-left: -900%;
+  }
+  51%,55% {
+    margin-left: -1000%;
+  }
+  56%,60% {
+    margin-left: -1100%;
+  }
+  61%,65% {
+    margin-left: -1200%;
+  }
+  66%,70% {
+    margin-left: -1300%;
+  }
+  71%,75% {
+    margin-left: -1400%;
+  }
+  76%,80% {
+    margin-left: -1500%;
+  }
+  81%,85% {
+    margin-left: -1600%;
+  }
+  86%,90% {
+    margin-left: -1700%;
+  }
+  91%,95% {
+    margin-left: -1800%;
+  }
+  96%,100% {
+    margin-left: -1900%;
+  }
+}
+
+.page4 {
+    .wedding-photos {
+      width: 96%;
+      margin: torem(20) auto;
+      font-size: 0;
+      position: relative;
+      .zoom-img{
+        position: absolute;
+        top: torem(50);
+        width: 100%;
+        .zoom-img-wrapper{
+          height: torem(400);
+          overflow: hidden;
+        }
+        img{
+          width: 100%;
+          opacity: 0;
+          -webkit-transition: all 1s .2s ease; 
+          transition: all 1s .2s ease; 
+        }
+        img.show,
+        a.show{
+          opacity: 1;
+        }
+        a{
+          position: absolute;
+          right: 0;
+          top: -#{torem(15)};
+          color: #ab4a20;
+          font-size: torem(20);
+          font-weight: bold;
+          text-decoration: none;
+          border-radius: 100%;
+          border: 1px solid #ab4a20;
+          display: inline-block;
+          width: torem(30);
+          height: torem(30);
+          line-height: torem(30);
+          text-align: center;
+          display: none;
+          opacity: 0;
+          -webkit-transition: all 1s .2s ease; 
+          transition: all 1s .2s ease;
+        }
+      }
+      ul{
+        position: relative;
+        width: 50%;
+        box-sizing: border-box;
+        display: inline-block;
+        li{
+          position: absolute;
+          width: torem(40);
+          height: torem(40);
+          opacity: 0;
+          img{
+            width: torem(40);
+            height: torem(40);
+            border-radius: 100%;
+            cursor: pointer;
+          }
+          &.selected img{
+            border: 1px solid #ab4a20;
+          }
+        }
+      }
+      .left-heart li.move{
+        opacity: 1;
+        &:first-child{
+          -webkit-transition: all 1s 2.9s ease;
+          transition: all 1s 2.9s ease;
+        }
+        &:nth-child(2){
+          -webkit-transition: all 1s 2.5s ease;
+          transition: all 1s 2.5s ease;
+        }
+        &:nth-child(3){
+          -webkit-transition: all 1s 2.1s ease;
+          transition: all 1s 2.1s ease;
+        }
+        &:nth-child(4){
+          -webkit-transition: all 1s 1.7s ease;
+          transition: all 1s 1.7s ease;
+        }
+        &:nth-child(5){
+          -webkit-transition: all 1s 1.3s ease;
+          transition: all 1s 1.3s ease;
+        }
+        &:nth-child(6){
+          -webkit-transition: all 1s .9s ease;
+          transition: all 1s .9s ease;
+        }
+        &:nth-child(7){
+          -webkit-transition: all 1s .5s ease;
+          transition: all 1s .5s ease;
+        }
+        &:nth-child(8){
+          -webkit-transition: all 1s .1s ease;
+          transition: all 1s .1s ease;
+        }
+      }
+      .right-heart li.move{
+        opacity: 1;
+        &:first-child{
+          -webkit-transition: all 1s 3.3s ease;
+          transition: all 1s 3.3s ease;
+        }
+        &:nth-child(2){
+          -webkit-transition: all 1s 3.7s ease;
+          transition: all 1s 3.7s ease;
+        }
+        &:nth-child(3){
+          -webkit-transition: all 1s 4.1s ease;
+          transition: all 1s 4.1s ease;
+        }
+        &:nth-child(4){
+          -webkit-transition: all 1s 4.5s ease;
+          transition: all 1s 4.5s ease;
+        }
+        &:nth-child(5){
+          -webkit-transition: all 1s 4.9s ease;
+          transition: all 1s 4.9s ease;
+        }
+        &:nth-child(6){
+          -webkit-transition: all 1s 5.3s ease;
+          transition: all 1s 5.3s ease;
+        }
+        &:nth-child(7){
+          -webkit-transition: all 1s 5.7s ease;
+          transition: all 1s 5.7s ease;
+        }
+        &:nth-child(8){
+          -webkit-transition: all 1s 6.1s ease;
+          transition: all 1s 6.1s ease;
+        }
+      }
+      .left-heart li{
+        &:first-child{
+          top: torem(50);
+          left: torem(106);
+        }
+        &:nth-child(2){
+          top: torem(30);
+          left: torem(50);
+        }
+        &:nth-child(3){
+          top: torem(70);
+          left: torem(4);
+        }
+        &:nth-child(4){
+          top: torem(126);
+          left: torem(5);
+        }
+        &:nth-child(5){
+          top: torem(180);
+          left: torem(15);
+        }
+        &:nth-child(6){
+          top: torem(228);
+          left: torem(36);
+        }
+        &:nth-child(7){
+          top: torem(275);
+          left: torem(64);
+        }
+        &:nth-child(8){
+          top: torem(308);
+          left: torem(108);
+        }
+      }
+      .right-heart li{
+        &:first-child{
+          top: torem(50);
+          right: torem(106);
+        }
+        &:nth-child(2){
+          top: torem(30);
+          right: torem(50);
+        }
+        &:nth-child(3){
+          top: torem(70);
+          right: torem(4);
+        }
+        &:nth-child(4){
+          top: torem(126);
+          right: torem(5);
+        }
+        &:nth-child(5){
+          top: torem(180);
+          right: torem(15);
+        }
+        &:nth-child(6){
+          top: torem(228);
+          right: torem(36);
+        }
+        &:nth-child(7){
+          top: torem(275);
+          right: torem(64);
+        }
+        &:nth-child(8){
+          top: torem(308);
+          right: torem(108);
+        }
+      }
+    }
+}
+
+.page5 {
+    position: relative;
+    .page-content{
+      overflow: hidden;
+      .pc5-title{
+        font-size: torem(24);
+        margin-top: torem(100);
+      }
+    }
+    .icons-list{
+      position: absolute;
+      top: 0;
+      ul li{
+        position: absolute;
+        top: 0;
+        width: torem(16);
+        height: torem(16);
+        z-index: 1000;
+        -webkit-transition: all 12s ease .5s;
+        transition: all 12s ease .5s;
+      }
+    }
+}
+
+.left-curtain {
+	float: left;
+}
+
+.left-curtain,
+.right-curtain {
+	position: absolute;
+	top: 0;
+	width: 50%;
+	z-index: 100;
+	transition: width 2s 1s ease;
+	-webkit-transition: width 2s 1s ease;
+}
+
+.left-curtain {
+	left: 0;
+}
+
+.right-curtain {
+	right: 0;
+}
+
+.left-curtain.open-curtain,
+.right-curtain.open-curtain {
+	width: 16%;
+}
+
+.left-curtain img,
+.right-curtain img {
+	width: 100%;
+	height: 100%;
+}
+
+/**
+ * 适配横屏的做法，与页面中html和js对应
+ */
+.mask {
+  width: 100%;
+  height: 100%;
+  background: pink;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  display: none;
+}
+
+.mask-box {
+  width: 100%;
+  height: torem(252);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: torem(-119);
+}
+
+.mask-pic {
+  width: torem(194);
+  height: torem(194);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mask i {
+  width: torem(128);
+  height: torem(194);
+  background: url(http://oisj33nbt.bkt.clouddn.com/screen-tips.png) 0 0 no-repeat;
+  background-size: torem(128) torem(194);
+  display: block;
+  margin: 0 auto;
+  -webkit-animation: maskAni 1.5s ease infinite alternate;
+  animation: maskAni 1.5s ease infinite alternate;
+}
+
+.mask span {
+  font-size: torem(22);
+  display: block;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  height: torem(25);
+  padding-top: torem(10);
+}
+
+@-webkit-keyframes maskAni {
+  0% {
+    -webkit-transform: rotate(-90deg);
+  }
+  30% {
+    -webkit-transform: rotate(-90deg);
+  }
+  70% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+@keyframes maskAni {
+  0% {
+    transform: rotate(-90deg);
+  }
+  30% {
+    transform: rotate(-90deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .flexcontainer {
+    display: block;
+  }
+}
+
